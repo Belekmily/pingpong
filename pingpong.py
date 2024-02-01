@@ -37,6 +37,20 @@ class GameSprite(sprite.Sprite):
    def reset(self):
       window.blit(self.image, (self.rect.x, self.rect.y))
 
+class Pilka(GameSprite):
+    def reset_predkosci(self,predkoscx=8,predkoscy=-8):
+        self.predkosc_pilki_x = predkoscx
+        self.predkosc_pilki_y = predkoscy
+
+    def update(self):
+        self.rect.x += self.predkosc_pilki_x
+        self.rect.y += self.predkosc_pilki_y
+        if self.rect.y < 0:
+            self.predkosc_pilki_y *= -1
+        if self.rect.y > win_height - 50:
+            self.predkosc_pilki_y *= -1
+SpritePilka = Pilka(img_pilka,win_width/2,win_height/2,50,50,0)
+SpritePilka.reset_predkosci()
 
 class Player(GameSprite):
    #method to control the sprite with arrow keys
