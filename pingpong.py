@@ -1,7 +1,11 @@
 from pygame import *
 from random import randint
 
+score_L = 0
+score_P = 0
 
+predkosc_pilki_x = -8
+predkosc_pilki_y = 8
 
 img_paletka = "paletka.png"
 img_pilka = "pilka.png"
@@ -42,3 +46,24 @@ class Player(GameSprite):
          self.rect.x -= self.speed
       if keys[K_RIGHT] and self.rect.x < win_width - 80:
          self.rect.x += self.speed
+
+
+
+class PlayerP(GameSprite):
+   #method to control the sprite with arrow keys
+   def update(self):
+      keys = key.get_pressed()
+      if keys[K_UP] and self.rect.y > 0:
+          self.rect.y -= self.speed
+      if keys[K_DOWN] and self.rect.y < 400:
+          self.rect.y += self.speed
+
+#klasa gracza
+class PlayerL(GameSprite):
+  #method to control the sprite with arrow keys
+   def update(self):
+      keys = key.get_pressed()
+      if keys[K_w] and self.rect.y > 0:
+          self.rect.y -= self.speed
+      if keys[K_s] and self.rect.y < 400:
+          self.rect.y += self.speed
